@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SWIM Hub - AI-Powered Learning Platform</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e0f7fa, #80deea);
+      color: #004d40;
+    }
+    header {
+      background-color: #00695c;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #004d40;
+      padding: 10px;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #00695c;
+    }
+    input[type="file"], input[type="text"] {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #00695c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #004d40;
+    }
+    .quiz-preview, .achievements, .previous-quizzes {
+      margin-top: 2rem;
+    }
+    .question, .achievement, .quiz-entry {
+      background-color: #f1f8e9;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SWIM Hub</h1>
+    <p>Strive • Wonder • Innovate • Master</p>
+  </header>
+
+  <nav>
+    <a href="#teacher-portal">Teacher Portal</a>
+    <a href="#quiz-page">Quiz Page</a>
+    <a href="#profile-page">Profile Page</a>
+  </nav>
+
+  <!-- Teacher Portal Section -->
+  <section id="teacher-portal" class="container">
+    <h2>Teacher Portal</h2>
+    <p>Utilize AI to generate quizzes from images or text inputs.</p>
+    <label>Upload Image for Quiz Generation:</label>
+    <input type="file" accept="image/*" id="imageUpload" />
+    <label>Or Enter Text/Chapter Title:</label>
+    <input type="text" id="textInput" placeholder="e.g., Chapter 3 - Water Cycle" />
+    <button onclick="generateQuiz()">Generate Quiz</button>
+
+    <div class="quiz-preview" id="quizPreview">
+      <!-- Quiz preview will show here -->
+    </div>
+  </section>
+
+  <!-- Quiz Page Section -->
+  <section id="quiz-page" class="container">
+    <h2>Quiz Page</h2>
+    <p>Engage with interactive quizzes and earn rewards!</p>
+    <button onclick="startQuiz()">Start Quiz</button>
+    <div class="quiz-preview" id="studentQuiz">
+      <!-- Student quiz will appear here -->
+    </div>
+  </section>
+
+  <!-- Profile Page Section -->
+  <section id="profile-page" class="container">
+    <h2>Profile Page</h2>
+    <div class="achievements">
+      <h3>Your Achievements</h3>
+      <div class="achievement">
+        <p>Total Stars: <span id="totalStars">0</span></p>
+        <p>Badges Earned: <span id="badges">None</span></p>
+        <p>Certificates: <span id="certificates">None</span></p>
+      </div>
+    </div>
+    <div class="previous-quizzes">
+      <h3>Previous Quizzes</h3>
+      <div class="quiz-entry">
+        <p>No quizzes played yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function generateQuiz() {
+      const preview = document.getElementById("quizPreview");
+      preview.innerHTML = \`
+        <h3>Generated Quiz</h3>
+        <div class="question">
+          <strong>Q1:</strong> What is the process of water changing from liquid to gas?
+          <br/>
+          <em>Options: Evaporation, Condensation, Precipitation</em>
+        </div>
+        <div class="question">
+          <strong>Q2:</strong> Which part of the water cycle involves cloud formation?
+          <br/>
+          <em>Options: Condensation, Collection, Evaporation</em>
+        </div>
+        <div class="question">
+          <strong>Q3:</strong> True or False: Rain is a result of condensation.
+        </div>
+      \`;
+    }
+
+    function startQuiz() {
+      const studentQuiz = document.getElementById("studentQuiz");
+      studentQuiz.innerHTML = \`
+        <h3>Quiz: Water Cycle</h3>
+        <div class="question">
+          <strong>Q1:</strong> What is the process of water changing from liquid to gas?
+          <br/>
+          <input type="radio" name="q1" /> Evaporation<br/>
+          <input type="radio" name="q1" /> Condensation<br/>
+          <input type="radio" name="q1" /> Precipitation<br/>
+        </div>
+        <div class="question">
+          <strong>Q2:</strong> Which part of the water cycle involves cloud formation?
+          <br/>
+          <input type="radio" name="q2" /> Condensation<br/>
+          <input type="radio" name="q2" /> Collection<br/>
+          <input type="radio" name="q2" /> Evaporation<br/>
+        </div>
+        <div class="question">
+          <strong>Q3:</strong> True or False: Rain is a result of condensation.
+          <br/>
+          <input type="radio" name="q3" /> True<br/>
+          <input type="radio" name="q3" /> False<br/>
+        </div>
+      \`;
+    }
+  </script>
+</body>
+</html>
